@@ -9,7 +9,7 @@ const translations = {
             contato: 'Contato'
         },
         hero: {
-            saudacoes: 'Olá, eu sou',
+            titulo: 'Olá, eu sou',
             nome: 'Gustavo',
             profissao: 'Desenvolvedor full stack',
             descricao: 'Criando soluções digitais que otimizam processos e melhoram a experiência dos usuários, combinando design e funcionalidade.',
@@ -81,7 +81,7 @@ const translations = {
             contato: 'Contact'
         },
         hero: {
-            saudacoes: 'Hello, I am',
+            titulo: 'Hello, I am',
             nome: 'Gustavo',
             profissao: 'Full stack developer',
             descricao: 'Creating digital solutions that optimize processes and improve user experience, combining design and functionality.',
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateHero(lang) {
         const t = translations[lang].hero;
-        document.querySelector('.hero-text h1 .highlight').textContent = t.nome;
+        document.querySelector('.hero-text h1').innerHTML = `${t.titulo} <span class="highlight">${t.nome}</span>`;
         document.querySelector('.subtitle').textContent = t.profissao;
         document.querySelector('.description').textContent = t.descricao;
         const botoes = document.querySelectorAll('.hero-text .cta-buttons .btn');

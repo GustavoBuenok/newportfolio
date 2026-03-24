@@ -257,29 +257,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateProjetos(lang) {
-        const t = translations[lang].projetos;
-        document.querySelector('.projetos h2').textContent = t.titulo;
+    const t = translations[lang].projetos;
+    document.querySelector('.projetos h2').textContent = t.titulo;
+    
+    const cards = document.querySelectorAll('.projeto-card:not(.projeto-card--github)');
+    const projectKeys = ['clinica', 'advocacia', 'vet'];
+    
+    cards.forEach((card, index) => {
+        const project = t.projetos_list[projectKeys[index]];
+        card.querySelector('h3').textContent = project.titulo;
+        card.querySelector('p').textContent = project.desc;
         
-        // Atualizar cards de projetos
-        const cards = document.querySelectorAll('.projeto-card:not(.projeto-card--github)');
-        const projectKeys = ['clinica', 'advocacia', 'vet'];
-        
-        cards.forEach((card, index) => {
-            const project = t.projetos_list[projectKeys[index]];
-            card.querySelector('h3').textContent = project.titulo;
-            card.querySelector('p').textContent = project.desc;
-            
-            const botoes = card.querySelectorAll('.btn-projeto');
-            botoes[0].innerHTML = '🌐 ' + t.verAoVivo;
-            botoes[1].innerHTML = '📂 ' + t.repositorio;
-        });
-        
-        // Atualizar card GitHub
-        const githubCard = document.querySelector('.projeto-card--github');
-        githubCard.querySelector('h3').textContent = t.github.titulo;
-        githubCard.querySelector('p').textContent = t.github.desc;
-        githubCard.querySelector('.btn').textContent = t.github.btn;
-    }
+        const botoes = card.querySelectorAll('.btn-projeto');
+        botoes[0].innerHTML = '🌐 ' + t.verAoVivo;
+        botoes[1].innerHTML = '📂 ' + t.repositorio;
+
+        const btnPreview = card.querySelector('.btn-preview');
+        if (btnPreview) {
+            btnPreview.innerHTML = '🔗 ' + t.verProjeto;
+        }
+    });
+    
+    const githubCard = document.querySelector('.projeto-card--github');
+    githubCard.querySelector('h3').textContent = t.github.titulo;
+    githubCard.querySelector('p').textContent = t.github.desc;
+    githubCard.querySelector('.btn').textContent = t.github.btn;
+}
 
     function updateContato(lang) {
         const t = translations[lang].contato;

@@ -136,6 +136,7 @@ nav ul li a:hover::after {
 .hero {
     min-height: 100vh;
     padding-top: 80px;
+    padding-bottom: 80px;
     display: flex;
     align-items: center;
     position: relative;
@@ -159,6 +160,8 @@ nav ul li a:hover::after {
 }
 
 .hero-content {
+    padding-top: 40px;
+    padding-right: 42px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
@@ -695,7 +698,7 @@ nav ul li a:hover::after {
 
 /* Footer */
 footer {
-    background: white;
+    background: #f3f4f6;
     color: var(--text-color);
     text-align: center;
     padding: 2rem 0;

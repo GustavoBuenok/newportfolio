@@ -1,3 +1,21 @@
+window.addEventListener("scroll", () => {
+  const bg = document.querySelector(".hero-background");
+  let scroll = window.scrollY;
+  bg.style.transform = `translateY(${scroll * 0.5}px)`;
+});
+
+document.querySelectorAll(".projeto-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  });
+});
+
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+});
+
 // 🌍 OBJETO COM TODOS OS TEXTOS EM PT-BR E EN-US
 const translations = {
     pt: {

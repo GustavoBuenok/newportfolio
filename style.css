@@ -936,3 +936,32 @@ footer {
         gap: 0.8rem;
     }
 }
+
+.projeto-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.projeto-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.2), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.projeto-card:hover::before {
+  opacity: 1;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}

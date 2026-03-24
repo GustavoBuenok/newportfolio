@@ -1,49 +1,81 @@
-// Atualiza o ano no footer
-document.getElementById('ano-atual').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
 
-// Smooth scroll para links de navegação
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+    // Atualiza o ano no footer
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+
+    // ── Hamburguer Menu ──────────────────────────────────────────
+    const hamburger  = document.getElementById('hamburger');
+    const navMenu    = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMenu() {
+        hamburger.classList.add('active');
+        navMenu.classList.add('open');
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.contains('open') ? closeMenu() : openMenu();
     });
-});
 
-// Animação das barras de progresso das habilidades
-const animateSkills = () => {
-    document.querySelectorAll('.progress').forEach(progress => {
-        const level = progress.getAttribute('data-level');
-        progress.style.width = `${level}%`;
+    navOverlay.addEventListener('click', closeMenu);
+
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
-};
 
-// Animação de fade-in para cards
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            
-            // Anima as barras de progresso quando os cards de habilidades ficam visíveis
-            if (entry.target.classList.contains('skill-card')) {
-                setTimeout(animateSkills, 300);
+    // ── Smooth scroll ────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
-        }
+        });
     });
-}, {
-    threshold: 0.1
-});
 
-// Aplica as animações aos elementos
-const animatedElements = document.querySelectorAll('.skill-card, .sobre-content, .contato-card');
-animatedElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'opacity 0.5s, transform 0.5s';
-    observer.observe(element);
-});
+    // ── Animação das barras de progresso ─────────────────────────
+    const animateSkills = () => {
+        document.querySelectorAll('.progress').forEach(progress => {
+            const level = progress.getAttribute('data-level');
+            progress.style.width = `${level}%`;
+        });
+    };
+
+    // ── Fade-in genérico ─────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+
+                if (entry.target.classList.contains('skill-card')) {
+                    setTimeout(animateSkills, 300);
+                }
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const animatedElements = document.querySelectorAll(
+        '.skill-card, .sobre-content, .contato-card, .projeto-card'
+    );
+
+    animatedElements.forEach(element => {
+        element.style.opacity    = '0';
+        element.style.transform  = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(element);
+    });
+
+}); // fim DOMContentLoaded

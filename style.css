@@ -47,7 +47,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
 }
 
 .logo {
@@ -255,6 +255,12 @@ nav ul li a:hover::after {
     padding: 8rem 0;
 }
 
+.habilidades h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -279,6 +285,11 @@ nav ul li a:hover::after {
     font-size: 3rem;
     margin-bottom: 1.5rem;
 }
+.skill-icon-img{
+    height: 5rem;
+    width: 5rem;
+}
+
 
 .skill-card h3 {
     margin-bottom: 1rem;
@@ -305,10 +316,216 @@ nav ul li a:hover::after {
     transition: width 1s ease-in-out;
 }
 
+/* =====================
+   PROJETOS SECTION
+   ===================== */
+.projetos {
+    padding: 8rem 0;
+    background: var(--gray-light);
+}
+
+.projetos h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Grid de projetos: 3 colunas no desktop */
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Card base */
+.projeto-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.projeto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+}
+
+/* Área de prévia / screenshot */
+.projeto-preview {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--accent-color);
+}
+
+.projeto-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.projeto-card:hover .projeto-preview img {
+    transform: scale(1.05);
+}
+
+/* Overlay com botão ao passar o mouse */
+.projeto-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 99, 235, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.projeto-card:hover .projeto-overlay {
+    opacity: 1;
+}
+
+.btn-preview {
+    background: white;
+    color: var(--primary-color);
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.btn-preview:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Corpo do card */
+.projeto-body {
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Tags de tecnologia */
+.projeto-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.tag {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+}
+
+.projeto-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+}
+
+.projeto-body p {
+    font-size: 0.95rem;
+    color: #666;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+/* Botões de ação do card */
+.projeto-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.btn-projeto {
+    display: inline-block;
+    padding: 0.55rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-projeto.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-projeto.primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-projeto.secondary {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn-projeto.secondary:hover {
+    background: #bfdbfe;
+    transform: translateY(-2px);
+}
+
+/* Card especial "Veja Mais no GitHub" */
+.projeto-card--github {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+}
+
+.github-cta {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}
+
+.github-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.github-cta h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: white;
+}
+
+.github-cta p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.projeto-card--github .btn.primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.projeto-card--github .btn.primary:hover {
+    background: var(--accent-color);
+}
+
 /* Contato Section */
 .contato {
     padding: 8rem 0;
-    background: var(--gray-light);
+    background: var(--bg-color);
 }
 
 .contato h2 {
@@ -370,7 +587,46 @@ footer {
     border-top: 1px solid var(--gray-light);
 }
 
-/* Responsividade */
+/* =====================
+   HAMBURGER MENU
+   ===================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    z-index: 1100;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+/* Animação X ao abrir */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =====================
+   RESPONSIVIDADE
+   ===================== */
 @media (max-width: 968px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -394,22 +650,67 @@ footer {
     .stats {
         justify-content: center;
     }
+
+    .projetos-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
+    /* Nav container: logo à esquerda, hamburguer à direita */
     .nav-container {
-        flex-direction: column;
-        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.2rem;
     }
 
     .logo {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menu oculto por padrão no mobile */
     nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 280px;
+        height: 100vh;
+        background: white;
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.35s ease;
+        z-index: 1050;
+    }
+
+    /* Menu aberto */
+    nav ul.open {
+        right: 0;
+    }
+
+    nav ul li a {
+        font-size: 1.1rem;
+    }
+
+    /* Overlay escuro atrás do menu — posicionado fixed na tela toda */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1040;
+    }
+
+    .nav-overlay.active {
+        display: block;
     }
 
     .hero-text h1 {
@@ -418,5 +719,13 @@ footer {
 
     .stats {
         grid-template-columns: 1fr;
+    }
+
+    .projeto-links {
+        flex-direction: column;
+    }
+
+    .btn-projeto {
+        text-align: center;
     }
 }
